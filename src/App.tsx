@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 const Container = styled.div`
   width: 500px;
@@ -24,16 +23,6 @@ const InputItem = styled.div`
   align-item:'center',
   margin-left:30%;
   margin-right:30%;
-`;
-
-const Quadrant = styled.div`
-  box-sizing: border-box;
-  width: 50%;
-  height: 50%;
-  border: 7px solid #4e7385;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const FirstQuadrant = styled.div`
