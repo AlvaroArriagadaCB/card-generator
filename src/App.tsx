@@ -8,8 +8,6 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color:'black';
-  margin-left:30%;
-  margin-right:30%;
 `;
 
 const H1 = styled.div`
@@ -27,20 +25,36 @@ const InputItem = styled.div`
 
 const FirstQuadrant = styled.div`
 box-sizing: border-box;
-width: 48%;
-height: 48%;
-margin-right: 2%;
-margin-bottom: 2%;
-display: flex;
--webkit-box-pack: center;
-border-radius: 20px;
-justify-content: center;
--webkit-box-align: center;
-border-bottom-left-radius: 30px;
-border-bottom-right-radius: 30px;
-border-top-left-radius: 31px;
-border-top-right-radius: 30px;
-align-items: center;
+  width: 48%;
+  height: 48%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  -webkit-box-pack: center;
+  border-radius: 20px;
+  justify-content: center;
+  -webkit-box-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 31px;
+  border-top-right-radius: 30px;
+  align-items: center;
+
+  position: relative;
+
+  ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top-left-radius: 10px;
+    border-style: solid;
+    border-width: 50px 50px 0 0;
+    border-color: rgb(253 74 105) transparent transparent;
+  }
+
 `;
 
 const SecondQuadrant = styled.div`
@@ -58,6 +72,21 @@ border-bottom-right-radius: 10px;
 border-top-left-radius: 10px;
 align-items: center;
 border-top-right-radius: 10px;
+
+position: relative;
+
+ ::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 0 0 50px;
+    border-color: #00BCD4 transparent transparent;
+  }
+
 `;
 
 const Third = styled.div`
@@ -75,6 +104,23 @@ border-bottom-right-radius: 10px;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;
 align-items: center;
+
+position: relative;
+
+  ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top-left-radius: 10px;
+    border-style: solid;
+    border-width: 50px 50px 0 0;
+    border-color: #009688 transparent transparent
+  }
+
+
 `;
 
 const Quad = styled.div`
@@ -92,6 +138,22 @@ border-top-left-radius: 10px;
 border-top-right-radius: 10px;
 -webkit-box-align: center;
 align-items: center;
+
+position: relative;
+
+ ::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 0 0 50px;
+    border-color: rgb(247 229 68) transparent transparent;
+  }
+
+
 `;
 
 const Image = styled.img`
@@ -101,13 +163,11 @@ object-fit: cover;
 `;
 
 const Questions = styled.div`
-width: 560px;
+width: 500px;
 height: 80px;
-padding-left: 29px;
 border-radius: 10px;
 border-bottom-left-radius: 10px;
 border-bottom-right-radius: 10px;
-padding-right: 30px;
 padding-bottom:30px;
 `;
 
@@ -218,24 +278,19 @@ const App = () => {
       <input type="text" placeholder="Pregunta inferior" value={bottomText} onChange={handleBottomTextChange} />
       <hr></hr>
       <div id="containerSection" style={{height:'700px'}}>
-      
-
-        <div id="container">
-        <Container style={{padding:'30px', backgroundColor:'rgb(19 31 60)', borderTopLeftRadius:'10px', borderTopRightRadius:'10px'}}>
-        { <Image src="./logo1.png" alt="imagetest" style={{position:'fixed', width:'100px',top:'240px',right:'717px',height:'160px'}}/> }
+        <div id="container" style={{width:'500px', margin:'0 auto'}}>
+        <Container style={{padding:'30px', backgroundColor:'rgb(19 31 60)', borderTopLeftRadius:'10px', borderTopRightRadius:'10px', width:'500px'}}>
           <FirstQuadrant>{images[0] && <Image src={images[0]} alt="image 1" style={{borderTopLeftRadius:'10px', borderTopRightRadius:'10px', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px'}} />}</FirstQuadrant>
           <SecondQuadrant>{images[1] && <Image src={images[1]} alt="image 2" style={{borderTopLeftRadius:'10px', borderTopRightRadius:'10px', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px'}}/>}</SecondQuadrant>
           <Third>{images[2] && <Image src={images[2]} alt="image 3" style={{borderTopLeftRadius:'10px', borderTopRightRadius:'10px', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px'}} />}</Third>
           <Quad>{images[3] && <Image src={images[3]} alt="image 4"style={{borderTopLeftRadius:'10px', borderTopRightRadius:'10px', borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px'}} />}</Quad>
         </Container>
         <Questions>
-          <div style={{width:'560px', display:'flex', flexWrap:'wrap', marginLeft:'75%',borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px', backgroundColor:'rgb(19 31 60)', marginRight:'30%', height:'100px', paddingBottom:'30px'}}>
+          <div style={{width:'560px', display:'flex', flexWrap:'wrap',borderBottomLeftRadius:'10px', borderBottomRightRadius:'10px', backgroundColor:'rgb(19 31 60)', height:'100px', paddingBottom:'30px'}}>
            <TopComponent>{topText}</TopComponent>
            <BottomComponent>{bottomText}</BottomComponent>
-          </div>
-        
-            
-          </Questions>
+          </div> 
+        </Questions>
       </div>
       </div>
       <div id="saveSection" style={{marginBottom:'50px', marginLeft:'45%'}}>
